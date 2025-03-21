@@ -38,6 +38,11 @@ const applicantSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    credits: {
+      type: Number,
+      required: true,
+      unique: true,
+    },
     education: {
       type: [educationSchema],
       default: [],
