@@ -19,7 +19,7 @@ const JobListingSchema = new mongoose.Schema(
       required: true,
       enum: ["Remote", "Hybrid", "Offline"]
     },
-    industry: { type: String, required: true },
+    industry: { type: String },
     createdAt: { type: Date, default: Date.now }
   },
   { timestamps: true }
@@ -31,10 +31,10 @@ const CompanySchema = new mongoose.Schema(
     website: { type: String },
     logo: { type: String },
     location: { type: String },
-    industry: { type: String, required: true },
+    industry: { type: String},
     jobListings: [JobListingSchema] // Embedding job listings inside the company
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Company", CompanySchema);
+export default mongoose.models.Company || mongoose.model("Company", CompanySchema);;
